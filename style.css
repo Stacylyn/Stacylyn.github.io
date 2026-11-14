@@ -1,0 +1,1016 @@
+/* ===========================================
+GENERAL WEBSITE STYLYING
+Used for all pages
+=============================================*/
+
+html {scroll-behavior: smooth;}
+
+body {
+    margin: 0;
+    background: #160806;
+    color: #f8e1ae;
+    font-family: 'playfair Display', Georgia, serif;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+    
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 18px;
+    background: rgba(15, 6, 4, 0.82);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #f5cf87;
+}
+
+
+/* ===========================================
+Primarily the MAIN PAGE - HOMEPAGE
+Red carpet, signature, buttons, photo tiles 
+=============================================*/
+
+.hero {
+    min-height: 100vh;
+    background-image:
+        linear-gradient(
+            90deg,
+            transparent 35%,
+            rgba(0,0,0,.45) 100%
+            ),
+            url("red-carpet.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 140px 5% 35px;
+}
+
+.hero-content {
+    width: 49%;
+    text-align: center;
+}
+
+h1 {
+    font-size: clamp(42px, 6vw, 90px);
+    font-weight: normal;
+    margin: 0;
+}
+
+.hero-content h2 {
+    color: white;
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.hero-content p {
+    font-size: 23px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.signature {
+    font-family: 'Herr Von Muellerhoff', cursive;
+    font-size: clamp(100px, 12vw, 140px);
+    font-weight: normal;
+    color: #f5cf87;
+    line-height: 1.2;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.buttons a {
+    padding: 15px 24px;
+    border: 1px solid #f5cf87;
+    color: #f5cf87;
+    background: rgba(0,0,0,.5);
+    text-decoration: none;
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    width: 100%;
+    margin-top: 65px;
+}
+
+.tile {
+    min-height: 175px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 18px 8px;
+    border: 1px solid #d9b76c;
+    color: white;
+    font-size: 21px;
+    text-decoration: none;
+    text-align: center;
+    background:
+        linear-gradient(transparent, rgba(0,0,0,.9)), #4b2017;
+}
+
+.tile:hover {
+    border-color: white;
+    transform: translateY(-3px);
+}
+
+.details {
+    padding: 70px 10%;
+    min-height: 240px;
+    border-top: 1px solid #61442b;
+}
+
+@media (max-width: 750px) {
+    .hero {
+        padding-top: 180px;
+        background-position: 35% center;
+    }
+
+.hero-content {
+    width: 100%;
+    margin-top: 350px;
+    background: rgba(0,0,0,.65);
+    padding: 20px;
+    }
+
+.portfolio {
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.tile.film {
+    background-image: 
+        linear-gradient(
+                to top, 
+                rgba(0,0,0,0.8),
+                transparent),
+        url("Film.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tile.opera {
+    background-image: 
+        linear-gradient(
+                to top, 
+                rgba(0,0,0,0.8),
+                transparent),
+        url("Opera.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tile.concerts {
+    background-image: 
+        linear-gradient(
+                to top, 
+                rgba(0,0,0,0.8),
+                transparent),
+        url("Concerts.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.tile.theater {
+    background-image: 
+        linear-gradient(
+                to top, 
+                rgba(0,0,0,0.8),
+                transparent),
+        url("Stage.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hollywood Paparazzi Camera Flashes */
+.paparazzi-flashes {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+    animation: paparazzi-finish 0s 10s forwards;
+}
+
+/* Individual camera flashes */
+.camera-flash {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    opacity: 0;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.35) 20%,
+        rgba(255, 255, 255, 0) 70%
+    );
+
+    animation:  camera-pop 0.45s ease-out both;
+}
+
+/* Flash positions and timing */
+.flash-1 {
+    top: 15%;
+    right: 20%;
+    animation-delay: 0.3s;
+}
+.flash-2 {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 0.7s;
+}
+.flash-3 {
+    bottom: 40%;
+    right: -5%;
+    animation-delay: 0.8s;
+}
+.flash-4 {
+    top: 5%;
+    right: 50%;
+    animation-delay: 1s;
+}
+.flash-5 {
+    top: 15%;
+    left: -20%;
+    animation-delay: 1.3s;
+}
+.flash-6 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 1.4s;
+}
+.flash-7 {
+    top: 60%;
+    right: 0%;
+    animation-delay: 1.7s;
+}
+.flash-8 {
+    bottom: 60%;
+    right: 50%;
+    animation-delay: 2.1s;
+}
+.flash-9 {
+    top: 10%;
+    left: 0%;
+    animation-delay: 2.3s;
+}
+.flash-10 {
+    bottom: 10%;
+    left: 0%;
+    animation-delay: 2.5s;
+}
+.flash-11 {
+    top: 0%;
+    left: -20%;
+    animation-delay: 2.6s;
+}
+
+/* Quick camera flash */
+@keyframes camera-pop {
+    0% {opacity: 0;
+        transform: scale(0.5);
+    }
+    10% {opacity: 1;
+        transform: scale(1);
+    }
+    30% {opacity: 0.7;
+    }
+    100% {opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
+/* Hide the flash overlay after the animation */
+@keyframes paparazzi-finish {
+    to {
+        visibility: hidden;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .paparazzi-flashes {
+        display: none;
+    }
+}
+
+/* Repeat the same flashes 6 seconds later */
+.repeat-flash.flash-1 { animation-delay: 6.3s; }
+.repeat-flash.flash-2 { animation-delay: 6.7s; }
+.repeat-flash.flash-3 { animation-delay: 6.8s; }
+.repeat-flash.flash-4 { animation-delay: 7s; }
+.repeat-flash.flash-5 { animation-delay: 7.3s; }
+.repeat-flash.flash-6 { animation-delay: 7.4s; }
+.repeat-flash.flash-7 { animation-delay: 7.7s; }
+.repeat-flash.flash-8 { animation-delay: 8.1s; }
+.repeat-flash.flash-9 { animation-delay: 8.3s; }
+.repeat-flash.flash-10 { animation-delay: 8.5s; }
+.repeat-flash.flash-11 { animation-delay: 8.6s; }
+
+
+/* ===========================================
+This is for the FILM & TELEVISION page
+Movie posters, Photos, Descriptions, and links
+=============================================*/
+
+.film-page {
+    background: #1a0909;
+    background-image: url(Photo/mp_film-theater-background.png);
+    background-position: center top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    color: #f5d9a0;
+}
+
+.film-main {
+    padding: 70px 7% 70px;
+}
+
+.film-intro {
+    text-align: center;
+    padding: 40px 10px;
+    border-bottom: 1px solid #b99355;
+}
+
+/* Styling only the main Film heading */
+.film-intro h1 {
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 570;
+    letter-spacing: 4px;
+}
+
+/* Styling my name */
+.film-intro h2 {
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+}
+
+/* Styling my introductory sentence */
+.film-intro p {
+    font-size: 19px;
+    font-style: italic;
+}
+
+/* Styling my featured productions area */
+.film-projects {
+    padding: 50px 0;
+    text-align: center;
+}
+
+
+/* -------------------------------------
+POSTER GALLERIES (Film & Television) 
+---------------------------------------*/
+
+/* Style the Film and TV section headings */
+.film-projects h2,
+.tv-projects h2 {
+    font-size: 40px;
+    font-weight: normal;
+    color: #f5d9a0;
+    text-align: center;
+}
+
+/* Add spacing between sections / Styling the TV Production section */
+.tv-projects {
+    padding: 100px 0 50px;
+}
+
+/* Arrange posters into responsive columns */
+.film-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Control the size and proportions of each poster */
+.film-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+/* Style the titles beneath each poster */
+.film-card h3 {
+    font-size: 18px;
+    font-weight: normal;
+    color: #f5d9a0;
+    text-align: center;
+}
+
+/* Makes style clickable without the underline */
+.film-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===========================================
+   Each Individual FILM PRODUCTION Pages
+   Photos, Behind the Scenes, and Film Links
+=========================================== */
+
+/* Background and Text COLORS */
+.production-page {
+    background-color: #1a0909;
+    background-image: url(Photo/mp_film-theater-background.png);
+    background-position: center top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    color:#f5d9a0;
+}
+
+/* Individual "Film Mainpage" SPACING */
+.production-main {
+    padding: 70px 7%;
+}
+
+/* Film title and year */
+.production-intro {
+    text-align: center;
+    padding: 40px 10px;
+    border-bottom: 1px solid #b99355;
+}
+
+.production-intro h1 {
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 570;
+    letter-spacing: 4px;
+}
+
+.production-intro p {
+    font-size: 19px;
+    font-style: italic;
+}
+
+/* Arrange photos & blog into two columns */
+.production-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 60px;
+}
+
+/* Style the column headings */
+.production-photos h2,
+.production-blog h2 {
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.production-blog h3 {
+    font-size: 30px;
+    font-weight: 570;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.production-blog h4 {
+    font-size: 23px;
+    font-weight: bold;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.production-blog h5 {
+    font-size: 18px;
+    font-weight: normal;
+    color: rgb(238, 228, 213);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+/* Arrange photographs into a grid */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+/* Style each photograph */
+.photo-gallery img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid #b99355;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Behind the Scenes blog title style */
+.production-blog h3 {
+    font-size: 23px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Blog paragraph style */
+.production-blog p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Watch Film section */
+.production-video {
+    text-align: center;
+    margin-top: 90px;
+    padding-top: 40px;
+    border-top: 1px solid #b99355;
+}
+
+.production-video h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+/* Watch Clip Film Button  */
+.watch-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 15px;
+    border: 1px solid #b99355;
+    color: #f5d9a0;
+    background-color: #301515;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+/* Button changes when hovered over */
+.watch-button:hover {
+    background-color: #b99355;
+    color: #1a0909;
+}
+
+/* Back to Film & Television link */
+.production-back {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.production-back a {
+    color: #f5d9a0;
+    text-decoration: none;
+}
+
+/* Stack the columns on smaller screens */
+@media (max-width: 768px) {
+    .production-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+
+/* ===========================================
+This is for the OPERA page
+Opera posters, Photos, Descriptions, 
+Opera mp4 video links and Music mp3 uploads
+=============================================*/
+
+/* OPERA PAGE - Colors & Default Font */
+.opera-page {
+    background-color: #F3D9A5;
+    color: #571B16;
+    font-family: 'Libre Caslon Text', serif;
+}
+
+/* OPERA PAGE - Background Image */
+.opera-intro {
+    background-image:
+        radial-gradient(
+            circle 300px at 48% 20%,
+            rgba(246, 245, 232, 0.95) 40%,
+            rgba(250, 246, 223, 0.55) 70%,
+            rgba(255, 240, 190, 0) 100%
+        ),
+        radial-gradient(
+            circle 400px at 60% 40%,
+            rgba(246, 245, 232, 0.95) 40%,
+            rgba(250, 246, 223, 0.55) 70%,
+            rgba(255, 240, 190, 0) 100%
+        ),
+        radial-gradient(
+            circle 300px at 35% 40%,
+            rgba(246, 245, 232, 0.95) 40%,
+            rgba(250, 246, 223, 0.55) 70%,
+            rgba(255, 240, 190, 0) 100%
+        ),
+        /* Champagne fade toward the bottom */
+        linear-gradient(
+            to bottom,
+            rgba(243, 217, 165, 0.10) 0%,
+            rgba(243, 217, 165, 0.35) 40%,
+            rgba(243, 217, 165, 0.75) 75%,
+            rgba(243, 217, 165, 1) 100%
+        ),
+        url("Photo/op_Golden_Opera_House.png");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    min-height: 900px;
+    padding: 100px 5% 50px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* OPERA TITLE */
+.opera-intro h1 {
+    color: #380d09;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(85px, 11vw, 120px);
+    font-weight: 600;
+    letter-spacing: 6px;
+    margin-bottom: 0;
+}
+
+/* Gold Ornamental Divider image */
+.opera-ornament {
+    display: block;
+    width: 350px;
+    max-width: 80%;
+    height: auto;
+    margin: -45px auto -30px;
+}
+
+/* STACYLYN BENNETT - Name Title */
+.opera-intro h2 {
+    color: #070202;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 55px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+/* Introductory Sentence */
+.opera-intro p {
+    color: #380d09;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 28px;
+    font-style: italic;
+    margin-top: 0px;
+}
+
+/* Gold LINE Divider image */
+.opera-border {
+    display: block;
+    width: 105%;
+    height: 150px;
+    object-fit: fill;
+    margin: -50px 0 0 -2.5%;
+}
+
+/* FEATURED OPERA PRODUCTIONS - Heading and Lines */
+.opera-featured-heading {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    margin-top: 0px;
+}
+
+/* Gold Half-Lines */
+.opera-half-line {
+    display: block;
+    width: 70%;
+    height: 35px;
+    object-fit: fill;
+    justify-self: center;
+}
+
+/* Featured Opera Productions Title */
+.opera-featured-heading h2 {
+    color: #571B16;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: clamp(28px, 4vw, 55px);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ----------------------------------------
+OPERA PRODUCTION PHOTO GALLERY
+------------------------------------------- */
+
+/* Gallery - 5 buttons per row */
+.opera-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 30px 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 35px auto 80px;
+}
+
+/* Individual Opera Buttons - Gold Frame */
+.opera-tile {
+    display: block;
+    min-width: 0;
+    background-color: #E8CE95;
+    border: 3px solid #C8A45B;
+    border-radius: 5px;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+/* Opera Photograph */
+.opera-tile img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background-color: #D9C49B;
+    border-radius: 2px;
+}
+
+/* Opera Name Banner */
+.opera-tile h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 65px;
+    margin: 0;
+    padding: 12px 5px;
+    background-color: #E8CE95;
+    color: #571B16;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3;
+    box-sizing: border-box;
+}
+
+/* Hover Effect - Entire Framed Button */
+.opera-tile:hover {
+    transform: scale(1.04);
+    border-color: #D9B76C;
+}
+
+/* Tablet - 3 Buttons per Row */
+@media (max-width: 900px) {
+    .opera-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Phone - 2 Buttons per Row */
+@media (max-width: 600px) {
+    .opera-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 12px;
+    }
+
+    .opera-tile h3 {
+        font-size: 16px;
+    }
+}
+
+/* TEMPORARY - Photo placeholders */
+.opera-tile img {
+    min-height: 180px;
+}
+
+/* ----------------------------------------
+LA BOHEME Page
+------------------------------------------- */
+.opera-production-page {
+    background-image: url("Photo/op_Golden_Opera_House.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.opera-production-page header {
+    position: relative;
+}
+/* La Boheme Intro Title */
+.boheme-intro {
+    text-align: center;
+    padding: 50px 20px 40px;
+}
+/* Main Title */
+.boheme-intro h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(36px, 7vw, 76px);
+    color: #542018;
+    margin-bottom: 10px;
+}
+/* Composer */
+.boheme-intro h2 {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 26px;
+    margin-bottom: 1px;
+}
+/* Performer & Role */
+.boheme-intro h3 {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+/* Tagline */
+ .boheme-tagline {
+    font-family: 'Libre Caslon Text', serif;
+        font-style: italic;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+ }
+ /* Opera Synopsis */
+.boheme-synopsis {
+    max-width: 950px;
+    margin: 0 auto;
+    line-height: 1.7;
+    padding: 15px 50px 40px;
+    background-color: rgba(255, 248, 230, 0.88);
+    color: #542018;
+}
+.boheme-synopsis h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(25px, 4vw, 40px);
+    color: #542018;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.boheme-synopsis p {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+/* La Boheme Mobile Adjustments */
+@media (max-width: 600px) {
+    .boheme-synopsis {
+        padding: 30px 20px;
+    }
+    .boheme-synopsis p {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===========================================
+This is for the CONCERTS page
+Concert posters, Photos, Descriptions, 
+Concert mp4 video links and Music mp3 uploads
+=============================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===========================================
+This is for the THEATER page
+Theater posters, Photos, Descriptions, 
+Musical mp4 video links and Music mp3 uploads
+=============================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===========================================
+This is for the RESUME page
+with link to MY REEL mp4
+=============================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===========================================
+BIOGRAPHY Mainpage hosted scrolled page
+
+=============================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===========================================
+CONTACT Mainpage hosted scrolled page
+
+=============================================*/
+
+
+
+
+
+
+
+
+
+
+
+
