@@ -261,3 +261,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/* ===========================================
+   CONCERTS - SWITCH FEATURED VIDEO
+   =========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const concertPlayer = document.getElementById("concertMainVideo");
+    const concertButtons = document.querySelectorAll(
+        ".concerts-video-choice"
+    );
+
+    if (!concertPlayer || !concertButtons.length) return;
+
+    concertButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const videoId = button.dataset.video;
+
+            concertPlayer.src =
+                `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+
+            concertButtons.forEach(choice => {
+                choice.classList.remove("active");
+            });
+
+            button.classList.add("active");
+        });
+    });
+});
+
+

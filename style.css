@@ -31,11 +31,19 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
+    font-family: 'Libre Caslon Text', Georgia, serif;
     font-size: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease,
+                text-shadow 0.3s ease;
 }
 
-nav a:hover {
-    color: #f5cf87;
+nav a:hover,
+nav a:focus-visible {
+    color: #F5D58A;
+    text-shadow:
+        0 5px 5px rgba(255, 190, 65, 0.45),
+        0 9px 12px rgba(255, 175, 40, 0.25);
 }
 
 /* ===========================================
@@ -1593,19 +1601,312 @@ LA BOHEME Page
 
 
 
-
-
-
-
-
-
-
 /* ===========================================
-This is for the CONCERTS page
+CONCERTS PAGE - IVORY & GRAND PIANO
 Concert posters, Photos, Descriptions, 
 Concert mp4 video links and Music mp3 uploads
 =============================================*/
+.concerts-page {
+    background: #F8F3E9;
+    color: #1C1C1C;
+    font-family: Georgia, serif;
+}
 
+/* Keep navigation in normal document flow */
+.concerts-page header {
+    position: relative;
+}
+
+/* Full-width piano-inspired hero */
+.concerts-hero {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+
+    background-color: #F5EBDD;
+    background-image:
+    linear-gradient(
+        90deg,
+        rgba(255, 252, 245, 0) 0%,
+        rgba(255, 252, 245, 0) 15%,
+        rgba(255, 252, 245, 0.95) 30%,
+        rgba(255, 252, 245, 0.95) 70%,
+        rgba(255, 252, 245, 0) 85%,
+        rgba(255, 252, 245, 0) 100%
+    ),
+    url("Photo/co_piano_music_background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-bottom: 3px double #B99355;
+}
+
+/* Hero text container */
+.concerts-hero-content {
+    width: 90%;
+    padding: 25px 5% 45px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Performer name */
+.concerts-performer {
+    color: #24201C;
+    font-size: clamp(26px, 4vw, 45px);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 10px 0 12px;
+}
+
+/* Musical ornament */
+.concerts-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 85px;
+    margin: 30px auto 0;
+    overflow: hidden;
+}
+
+.concerts-ornament img {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* CONCERTS title */
+.concerts-hero h1 {
+    color: #111111;
+    font-family: Georgia, serif;
+    font-size: clamp(70px, 8.5vw, 126px);
+    font-weight: normal;
+    letter-spacing: 5px;
+    line-height: 1.1;
+    margin: 8px 0 12px;
+}
+
+/* Subtitle */
+.concerts-subtitle {
+    color: #78552F;
+    font-family: Georgia, serif;
+    font-size: clamp(22px, 2.7vw, 36px);
+    font-style: italic;
+    line-height: 1.25;
+    margin: 10px 0 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 700px) {
+
+    .concerts-hero {
+        min-height: 380px;
+        background-position: 65% center;
+    }
+
+    .concerts-hero-content {
+        width: 100%;
+        padding: 45px 20px;
+        background: rgba(255, 252, 245, 0.78);
+    }
+
+    .concerts-performer {
+        letter-spacing: 2px;
+    }
+
+    .concerts-hero h1 {
+        letter-spacing: 2px;
+    }
+}
+
+/* ===========================================
+   CONCERTS - PERFORMANCE VIDEOS and Thumbnails
+   =========================================== */
+.concerts-videos {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 30px;
+    max-width: 1350px;
+    margin: 40px auto 50px;
+    padding: 0 4%;
+    box-sizing: border-box;
+}
+
+.concerts-featured-video {
+    aspect-ratio: 16 / 9;
+    border: 2px solid #B99355;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #17110D;
+}
+
+.concerts-featured-video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Three video selections */
+.concerts-video-thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.concerts-video-choice {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    padding: 5px;
+    border: 2px solid #B99355;
+    border-radius: 8px;
+    background: #F5EBDD;
+    color: #78552F;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.concerts-video-choice img {
+    display: block;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.concerts-video-choice span {
+    display: block;
+    padding: 8px 4px;
+}
+
+.concerts-video-choice:hover,
+.concerts-video-choice.active {
+    border-color: #78552F;
+    box-shadow: 0 0 10px rgba(185, 147, 85, 0.4);
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+    .concerts-videos {
+        grid-template-columns: 1fr;
+    }
+
+    .concerts-video-thumbnails {
+        flex-direction: row;
+    }
+
+    .concerts-video-choice img {
+        height: 85px;
+    }
+}
+
+
+/* ===========================================
+   CONCERTS - AUDIO & PHOTO PANELS
+   =========================================== */
+
+.concerts-media-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    max-width: 1350px;
+    margin: 60px auto;
+    padding: 0 4%;
+    box-sizing: border-box;
+}
+
+.concerts-media-card {
+    background: #FFFDF7;
+    border: 2px solid #B99355;
+    border-radius: 12px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(90, 65, 30, 0.1);
+}
+
+.concerts-media-icon {
+    color: #B99355;
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.concerts-media-card h2 {
+    color: #78552F;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0 0 30px;
+}
+
+.concerts-audio-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.concerts-audio-track {
+    text-align: left;
+}
+
+.concerts-audio-track h3 {
+    color: #78552F;
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+
+.concerts-audio-track audio {
+    display: block;
+    width: 100%;
+}
+
+.concerts-audio-track img {
+    display: block;
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    border: 1px solid #B99355;
+    border-radius: 6px;
+    margin: 0 0 10px;
+}
+
+.concerts-audio-track {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #E1D3BC;
+}
+
+.concerts-photo-preview {
+    min-height: 265px;
+    border: 1px solid #D8C5A4;
+    border-radius: 8px;
+    background: #F5EBDD;
+}
+
+.concerts-gallery-caption {
+    color: #78552F;
+    font-size: 17px;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+    .concerts-media-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .concerts-media-card {
+        padding: 25px 18px;
+    }
+}
 
 
 
@@ -1628,16 +1929,199 @@ Theater posters, Photos, Descriptions,
 Musical mp4 video links and Music mp3 uploads
 =============================================*/
 
+/* ===========================================
+   MUSICAL THEATER PAGE - PURPLE, BLACK & GOLD
+   =========================================== */
+
+.theater-page {
+    background: #100B19;
+    color: #F5EBD7;
+    font-family: Georgia, serif;
+}
+
+.theater-main {
+    min-height: 100vh;
+}
+
+/* THEATRICAL HERO */
+.theater-hero {
+    text-align: center;
+    padding: 105px 20px 115px;
+
+    background-image:
+        linear-gradient(
+        rgba(20, 10, 35, 0.35),
+        rgba(20, 10, 35, 0.48)
+        ),
+        url("Photo/th_broadway_lights.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-bottom: 2px solid #C6A35D;
+}
+    
+.theater-eyebrow {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 3.5vw, 56px);
+    font-weight: normal;
+    letter-spacing: 5px;
+    color: #FFE6A3;
+    margin: 0 0 12px;
+
+    text-shadow:
+        0 0 6px rgba(255, 215, 130, 0.85),
+        0 0 16px rgba(255, 180, 65, 0.55),
+        0 3px 8px rgba(0, 0, 0, 0.9);
+}
+
+.theater-hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(60px, 8vw, 120px);
+    font-weight: normal;
+    letter-spacing: 5px;
+    line-height: 1.1;
+    margin: 25px 0 -25px;
+    color: #FFF4D6;
+    text-shadow:
+        0 0 8px rgba(255, 215, 130, 0.55),
+        0 0 22px rgba(255, 180, 65, 0.35),
+        0 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.theater-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -15px auto;
+    width: 100%;
+}
 
 
+.theater-divider img {
+    display: block;
+    width: 450px;
+    max-width: 85%;
+    height: auto;
+    opacity: 0.75;
+    filter:
+        brightness(1)
+        drop-shadow(0 0 4px rgba(255, 200, 90, 0.35));
+}
 
+.theater-subtitle {
+    font-family: Georgia, serif;
+    font-size: clamp(24px, 3vw, 38px);
+    font-style: italic;
+    line-height: 1.4;
+    color: #FFF8E8;
+    margin: -24px 0 0;
 
+    text-shadow:
+        0 0 8px rgba(255, 215, 130, 0.45),
+        0 3px 10px rgba(0, 0, 0, 0.95);
+}
 
+/* PRODUCTION GALLERY */
 
+.theater-productions {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 70px 5% 100px;
+}
 
+.theater-productions h2 {
+    color: #FFE6A3;
+    text-align: center;
+    font-size: 38px;
+    font-weight: normal;
+    margin: 0 0 45px;
+}
 
+.theater-production-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
 
+.theater-production-card {
+    min-height: 210px;
+    padding: 32px 25px;
+    box-sizing: border-box;
+    border: 1px solid #A9864A;
+    border-radius: 8px;
+    background: linear-gradient(
+        145deg,
+        #351D50,
+        #1A1029
+    );
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
 
+.theater-production-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(198,163,93,0.25);
+}
+
+/* CLICKABLE THEATER PRODUCTION CARDS */
+.theater-production-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.theater-production-link:focus-visible {
+    outline: 2px solid #D8B66F;
+    outline-offset: 4px;
+}
+
+.theater-card-number {
+    display: block;
+    color: #D8B66F;
+    font-size: 17px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.theater-production-card h3 {
+    color: #FFF8E8;
+    font-size: 25px;
+    font-weight: normal;
+    margin: 0 0 15px;
+}
+
+.theater-production-card p {
+    color: #F0E5F5;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* MOBILE LAYOUT */
+
+@media (max-width: 900px) {
+    .theater-production-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .theater-hero {
+        padding: 75px 15px 85px;
+    }
+
+    .theater-production-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .theater-productions {
+        padding: 50px 6% 70px;
+    }
+}
 
 
 
@@ -1647,9 +2131,210 @@ Musical mp4 video links and Music mp3 uploads
 
 
 /* ===========================================
-This is for the RESUME page
-with link to MY REEL mp4
-=============================================*/
+   MASTER CLASS PAGE - PURPLE, BLACK & GOLD
+   =========================================== */
+.masterclass-page {
+    background: #120D1B;
+    color: #E9DDEB;
+    font-family: Georgia, serif;
+}
+
+.masterclass-main {
+    min-height: 100vh;
+}
+
+/* MASTER CLASS HERO */
+.masterclass-hero {
+    text-align: center;
+    padding: 90px 20px 100px;
+    background:
+        radial-gradient(ellipse at center,
+            #4D2A73 0%,
+            #28133F 55%,
+            #100B19 100%);
+    border-bottom: 2px solid #C6A35D;
+}
+
+.masterclass-eyebrow {
+    color: #D7B56E;
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin: 0 0 28px;
+}
+
+.masterclass-hero h1 {
+    color: #F5E4BC;
+    font-family: Georgia, serif;
+    font-size: clamp(55px, 8vw, 110px);
+    font-weight: normal;
+    letter-spacing: 6px;
+    line-height: 1.1;
+    margin: 0 0 22px;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.55);
+}
+
+.masterclass-playwright {
+    color: #E1C7E9;
+    font-size: clamp(19px, 2.5vw, 28px);
+    font-style: italic;
+    margin: 0;
+}
+
+.masterclass-ornament {
+    color: #D8B66F;
+    font-size: 35px;
+    margin: 25px 0;
+}
+
+.masterclass-tagline {
+    color: #F0DCA8;
+    font-size: clamp(17px, 2vw, 23px);
+    font-style: italic;
+    margin: 0;
+}
+
+/* POSTER & PRODUCTION DETAILS */
+.masterclass-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: 55px;
+    align-items: center;
+    max-width: 1150px;
+    margin: 70px auto;
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+
+.masterclass-poster {
+    border: 2px solid #B99355;
+    padding: 10px;
+    background: #21142D;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+}
+
+.masterclass-poster-placeholder {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    color: #D7B56E;
+    font-size: 24px;
+    background: #301847;
+}
+
+.masterclass-details h2 {
+    color: #D7B56E;
+    font-size: 32px;
+    font-weight: normal;
+    margin: 0 0 25px;
+}
+
+.masterclass-details p {
+    color: #E9DDEB;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0 0 12px;
+}
+
+.masterclass-details strong {
+    color: #F5E4BC;
+}
+
+.masterclass-gold-divider {
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #C6A35D,
+        transparent
+    );
+    margin: 35px 0;
+}
+
+/* PERSONAL STORY */
+.masterclass-story {
+    max-width: 1000px;
+    margin: 75px auto;
+    padding: 55px 6%;
+    box-sizing: border-box;
+    background: #20142D;
+    border: 1px solid #8D7044;
+    border-radius: 10px;
+}
+
+.masterclass-story h2 {
+    color: #F5E4BC;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.masterclass-story-intro {
+    color: #D7B56E;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 45px !important;
+}
+
+.masterclass-story h3 {
+    color: #D7B56E;
+    font-size: 25px;
+    font-weight: normal;
+    margin: 35px 0 15px;
+}
+
+.masterclass-story p {
+    color: #E9DDEB;
+    font-size: 18px;
+    line-height: 1.9;
+    margin: 0 0 22px;
+}
+
+/* PRODUCTION PHOTOGRAPHS */
+.masterclass-gallery {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.masterclass-gallery h2 {
+    color: #F5E4BC;
+    font-size: 36px;
+    font-weight: normal;
+    margin: 0 0 20px;
+}
+
+.masterclass-gallery p {
+    color: #D8C7E2;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 750px) {
+    .masterclass-hero {
+        padding: 75px 20px 85px;
+    }
+
+    .masterclass-intro {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin: 45px auto;
+    }
+
+    .masterclass-poster-placeholder {
+        min-height: 320px;
+    }
+
+    .masterclass-story {
+        margin: 45px 5%;
+        padding: 35px 7%;
+    }
+}
 
 
 
@@ -1664,8 +2349,333 @@ with link to MY REEL mp4
 
 
 
+/* ==========================================
+   RESUME PAGE - IVORY & CHAMPAGNE
+   ========================================== */
+.resume-page {
+    background: linear-gradient(
+        135deg,
+        #FFFDF8,
+        #F2E6CF
+    );
+    color: #202124;
+    min-height: 100vh;
+}
+
+.resume-main {
+    padding: 110px 6% 70px;
+}
+
+/* Page heading */
+.resume-intro {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.resume-intro h1 {
+    color: #202124;
+    font-family: Georgia, serif;
+    font-size: clamp(34px, 5vw, 55px);
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.resume-gold-divider {
+    width: 130px;
+    height: 2px;
+    background: #C5A46D;
+    margin: 20px auto;
+}
+
+.resume-intro p {
+    color: #38312B;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    margin: 18px 0 12px;
+}
+
+/* Keep the introductory tagline understated */
+.resume-intro .resume-tagline {
+    color: #68615A;
+    font-size: 19px;
+    font-style: italic;
+    letter-spacing: 0;
+    margin-top: 12px;
+}
 
 
+.resume-tagline {
+    font-style: italic;
+}
+
+/* Three business cards per row */
+.resume-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+    max-width: 1250px;
+    margin: 0 auto 70px;
+}
+
+/* Shared business card design */
+.resume-card {
+    min-height: 220px;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 7px;
+    box-sizing: border-box;
+    text-decoration: none;
+    box-shadow: 0 7px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.resume-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 25px rgba(0,0,0,0.22);
+}
+
+.resume-card:focus-visible {
+    outline: 3px solid #2369A8;
+    outline-offset: 5px;
+}
+
+.resume-card-name {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.resume-card-divider {
+    width: 65px;
+    height: 1px;
+    background: currentColor;
+    margin: 17px auto;
+}
+
+.resume-card h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(19px, 1.9vw, 25px);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+}
+
+.resume-card p {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    margin: 0 0 22px;
+}
+
+.resume-card-link {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+/* FILM - Red carpet and gold */
+.resume-film {
+    background: linear-gradient(135deg, #690E1B, #29040A);
+    border-color: #D8B66A;
+    color: #F4D79B;
+}
+
+.resume-film h2 {
+    color: #FFFFFF;
+}
+
+/* OPERA - Champagne and gold */
+.resume-opera {
+    background: linear-gradient(135deg, #FFF9E9, #EAD3A3);
+    border-color: #B99355;
+    color: #8C6736;
+}
+
+.resume-opera h2 {
+    color: #3B100C;
+    text-shadow: 0 0 0.4px currentColor;
+}
+
+/* CONCERT - Piano black and white */
+.resume-concert {
+    background: linear-gradient(135deg, #191919, #444444);
+    border-color: #D4D4D4;
+    color: #EAEAEA;
+}
+
+.resume-concert h2 {
+    color: #FFFFFF;
+}
+
+.resume-concert .resume-card-link {
+    color: #F2D59D;
+}
+
+/* THEATER - Royal purple */
+.resume-theater {
+    background: linear-gradient(135deg, #512279, #240D45);
+    border-color: #D3B575;
+    color: #EAD9AE;
+}
+
+.resume-theater h2 {
+    color: #FFFFFF;
+}
+
+/* TECHNOLOGY - Contemporary blue */
+.resume-technology {
+    background: linear-gradient(135deg, #E9F3F9, #BDD6E8);
+    border-color: #48799F;
+    color: #355F80;
+}
+
+.resume-technology h2 {
+    color: #173F63;
+}
+
+/* PROFESSIONAL - White and silver */
+.resume-professional {
+    background: linear-gradient(135deg, #FFFFFF, #E7E9EB);
+    border-color: #9DA5AC;
+    color: #606870;
+}
+
+.resume-professional h2 {
+    color: #252B31;
+}
+
+/* Tablet - two cards per row */
+@media (max-width: 950px) {
+    .resume-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+}
+
+/* Phone - one card per row */
+@media (max-width: 600px) {
+    .resume-main {
+        padding: 130px 20px 50px;
+    }
+
+    .resume-card-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .resume-card {
+        min-height: 190px;
+    }
+}
+
+/* BACK TO MAIN PAGE BUTTON */
+.resume-page .back-home {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 40px;
+    padding: 14px 30px;
+
+    background: #202124;
+    color: #F5E6C8;
+    border: 1px solid #C5A46D;
+    border-radius: 5px;
+
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-align: center;
+
+    transition: all 0.3s ease;
+}
+
+.resume-page .back-home:hover {
+    background: #C5A46D;
+    color: #202124;
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   PROFESSIONAL BIOGRAPHY — RESUME PAGE
+   ========================================== */
+
+.professional-bio {
+    background-color: #FFF9EC;
+    color: #315C54;
+    padding: 75px 30px;
+    border-top: 2px solid #C6A76B;
+}
+
+.professional-bio-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.professional-bio-eyebrow {
+    color: #A47B38;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.professional-bio h2 {
+    color: #164B83;
+    font-family: Georgia, serif;
+    font-size: clamp(34px, 4vw, 48px);
+    text-align: center;
+    margin: 15px 0;
+}
+
+.professional-bio-divider {
+    width: 150px;
+    height: 2px;
+    background: #C6A76B;
+    margin: 25px auto;
+}
+
+.professional-bio-intro {
+    color: #087F69;
+    font-size: 21px;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.professional-bio-inner > p:not(.professional-bio-eyebrow) {
+    font-family: Georgia, serif;
+    line-height: 1.85;
+}
+
+.professional-bio-inner > p:not(.professional-bio-eyebrow):not(.professional-bio-intro) {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.professional-bio-closing {
+    text-align: center;
+    font-style: italic;
+    color: #164B83;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .professional-bio {
+        padding: 45px 20px;
+    }
+
+    .professional-bio-inner > p:not(.professional-bio-eyebrow):not(.professional-bio-intro) {
+        font-size: 16px;
+    }
+}
 
 
 
@@ -1673,23 +2683,712 @@ with link to MY REEL mp4
 BIOGRAPHY Mainpage hosted scrolled page
 
 =============================================*/
+.home-about {
+    background: linear-gradient(
+        135deg,
+        #170303 0%,
+        #570909 35%,
+        #870C16 65%,
+        #280405 100%
+    );
+
+    text-align: center;
+    padding: 75px 25px 85px;
+    border-top: 2px solid #D8B66A;
+    border-bottom: 2px solid #D8B66A;
+}
+
+.home-about h2 {
+    color: #FFF9EC;
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4vw, 45px);
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.home-about p {
+    color: #E4F1E9;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto 25px;
+}
+
+.home-about-tagline {
+    font-style: italic;
+}
+
+/* Sapphire blue button - About Stacylyn */
+/* ==========================================
+   HOMEPAGE - 3D SAPPHIRE BLUE BUTTON
+   ========================================== */
+
+.home-about-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 17px 35px;
+
+    /* Rich sapphire-blue gradient */
+    background: linear-gradient(
+        to bottom,
+        #428ACB 0%,
+        #2369A8 35%,
+        #164B83 65%,
+        #0B2C55 100%
+    );
+
+    /* Gold beveled border */
+    border: 2px solid #D8B66A;
+    border-radius: 7px;
+
+    color: #FFF9EC;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+
+    /* 3D depth and polished highlights */
+    box-shadow:
+        inset 0 2px 2px rgba(255,255,255,0.45),
+        inset 0 -4px 5px rgba(0,0,0,0.35),
+        0 6px 0 #071D39,
+        0 10px 18px rgba(0,0,0,0.5);
+
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+/* Button rises when hovered over */
+.home-about-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
+
+    box-shadow:
+        inset 0 2px 2px rgba(255,255,255,0.5),
+        inset 0 -4px 5px rgba(0,0,0,0.35),
+        0 9px 0 #071D39,
+        0 15px 25px rgba(0,0,0,0.55);
+}
+
+/* Button presses down when clicked */
+.home-about-button:active {
+    transform: translateY(5px);
+
+    box-shadow:
+        inset 0 2px 5px rgba(0,0,0,0.4),
+        0 1px 0 #071D39,
+        0 3px 6px rgba(0,0,0,0.4);
+}
 
 
 
+/* ==========================================
+   ABOUT STACYLYN BIO PAGE — A LIFE IN MANY ACTS
+   ========================================== */
+.about-page {
+    background-color: #FFF9EC;
+    color: #315C54;
+    font-family: Georgia, serif;
+    margin: 0;
+}
+
+/* ABOUT PAGE — HEADER OVER MOUNTAIN SKY */
+.about-page .about-header {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+
+    padding: 30px 20px 35px;
+    height: 280px;
+    margin-bottom: -280px;
+
+    background-color: transparent;
+    background-image: radial-gradient(
+        ellipse at center,
+        rgba(8, 45, 90, 0.32) 0%,
+        rgba(8, 45, 90, 0.12) 45%,
+        transparent 75%
+    );
+}
+
+/* Small gold heading above ABOUT STACYLYN */
+.about-page .about-overheader {
+    color: #FFE0A0;
+    font-family: Georgia, serif;
+    font-size: clamp(20px, 2.2vw, 30px);
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 5px rgba(0, 30, 65, 0.9),
+        0 4px 12px rgba(0, 30, 65, 0.6);
+
+    margin: 0 0 12px;
+}
+
+/* Main ABOUT STACYLYN title */
+.about-header h1 {
+    color: #FFFFFF;
+    font-size: clamp(42px, 5.5vw, 82px);
+    line-height: 1.1;
+    margin: 12px 0 15px;
+
+    text-shadow:
+        0 2px 5px rgba(0, 30, 65, 0.95),
+        0 5px 16px rgba(0, 30, 65, 0.75);
+}
+
+/* A Life in Many Acts subtitle */
+.about-subtitle {
+    color: #FFFFFF;
+    font-size: clamp(26px, 3vw, 42px);
+    font-style: italic;
+    margin: 10px 0;
+
+    text-shadow:
+        0 2px 5px rgba(0, 30, 65, 0.95),
+        0 5px 14px rgba(0, 30, 65, 0.75);
+}
+
+.about-gold-divider {
+    width: 150px;
+    height: 3px;
+    background-color: #D8B66A;
+    margin: 25px auto 0;
+}
+
+/* Opening photograph */
+.about-hero {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background-color: #E4F1E9;
+    border-top: 2px solid #C6A76B;
+    border-bottom: 2px solid #C6A76B;
+    position: relative;
+    z-index: 1;
+}
+
+.about-hero .about-mountain-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* ABOUT PAGE — SUBTLE WAVY GOLD DIVIDER */
+.about-hero::after {
+    content: "";
+    position: absolute;
+
+    bottom: -2px;
+    left: 0;
+
+    width: 100%;
+    height: 55px;
+
+    background-color: #FFF9EC;
+
+    clip-path: polygon(
+        0% 75%,
+        10% 65%,
+        20% 55%,
+        30% 50%,
+        40% 52%,
+        50% 60%,
+        60% 70%,
+        70% 75%,
+        80% 70%,
+        90% 60%,
+        100% 50%,
+        100% 100%,
+        0% 100%
+    );
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ABOUT PAGE — GOLD OUTLINE FOR WAVY DIVIDER */
+.about-hero::before {
+    content: "";
+    position: absolute;
+
+    bottom: 1px;
+    left: 0;
+
+    width: 100%;
+    height: 55px;
+
+    background-color: #D8B66A;
+
+    clip-path: polygon(
+        0% 75%,
+        10% 65%,
+        20% 55%,
+        30% 50%,
+        40% 52%,
+        50% 60%,
+        60% 70%,
+        70% 75%,
+        80% 70%,
+        90% 60%,
+        100% 50%,
+        100% 100%,
+        0% 100%
+    );
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Biography */
+.about-story {
+    width: 94%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 60px 35px;
+    box-sizing: border-box;
+    line-height: 1.6;
+    font-size: 24px;
+    position: relative;
+    display: flow-root;
+}
+
+/* ABOUT PAGE — ELEGANT GOLD DROP CAP */
+.about-page .about-story > h2 + p::first-letter {
+    float: left;
+
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 100px;
+    line-height: 0.72;
+
+    color: #B38A32;
+
+    padding-right: 12px;
+    padding-top: 0;
+
+    text-shadow: 1px 2px 2px rgba(80, 55, 15, 0.2);
+}
+
+/* ABOUT PAGE — BIOGRAPHY PARAGRAPH SPACING */
+.about-story > p {
+    margin-top: 0;
+    margin-bottom: 12px;
+    line-height: 1.45;
+}
+
+/* Circular gold-framed portrait */
+.about-portrait {
+    float: right;
+    width: 400px;
+    height: 400px;
+    box-sizing: border-box;
+    margin: -210px 0 25px 45px;
+
+    border: 7px solid #D8B66A;
+    border-radius: 50%;
+    padding: 5px;
+
+    background: #FFF9EC;
+    box-shadow:
+        0 0 0 2px #A47B38,
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    position: relative;
+    z-index: 2;
+    shape-outside: circle(50%);
+    shape-margin: 18px;
+}
+
+/* Portrait photograph */
+.about-portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 50%;
+}
+
+.about-story h2 {
+    color: #164B83;
+    font-family: Georgia, serif;
+    font-size: clamp(38px, 4.5vw, 58px);
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 15px 0 30px;
+}
+
+.about-story h3 {
+    color: #087F69;
+    font-size: 36px;
+    margin-top: 40px;
+    margin-bottom: 3px;
+}
+
+/* ABOUT PAGE — Italicized STORIES INTRODUCTION */
+.about-page .about-story .about-story-intro {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.5;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
 
 
+/* ABOUT PAGE — PERSONAL STORY CARDS */
 
+.about-chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 25px;
+}
 
+.about-chapter-card {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 55px minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 12px;
+    align-content: start;
 
+    padding: 24px 20px 22px;
 
+    background: #E4F1E9;
+    border: 1px solid #C6A76B;
+    border-radius: 10px;
 
+    text-decoration: none;
+    color: #315C54;
 
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.about-chapter-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(22, 75, 131, 0.15);
+}
+
+/* Larger gold chapter numbers */
+.about-chapter-number {
+    grid-column: 1;
+    grid-row: 1 / 3;
+
+    color: #B38A32;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Title beside the number */
+.about-chapter-card h4 {
+    grid-column: 2;
+    grid-row: 1;
+
+    color: #164B83;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    line-height: 1.15;
+    margin: 0 0 5px;
+}
+
+/* Description directly beneath title */
+.about-chapter-card p {
+    grid-column: 2;
+    grid-row: 2;
+
+    font-family: Georgia, serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.3;
+    margin: 0 0 8px;
+}
+
+/* Read the Story at bottom right */
+.about-read-more {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: end;
+    align-self: end;
+
+    color: #087F69;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+@media (max-width: 650px) {
+    .about-chapter-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Closing Banner on About Me page*/
+.about-closing {
+    background: linear-gradient(
+        90deg,
+        #E4F1E9 0%,
+        #F8F4E7 50%,
+        #E4F1E9 100%
+    );
+
+    text-align: center;
+    padding: 30px 25px 34px;
+    border-top: 1px solid #D8B66A;
+    border-bottom: 1px solid #D8B66A;
+}
+
+/* Heading with gold ornaments */
+.about-closing-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Gold tapered ornaments */
+.about-closing-ornament {
+    display: block;
+    width: 22%;
+    max-width: 230px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Main heading */
+.about-closing h2 {
+    color: #164B83;
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 3.5vw, 44px);
+    font-style: italic;
+    font-weight: normal;
+    white-space: nowrap;
+
+    margin: 0;
+}
+
+/* Closing subtitle */
+.about-closing p {
+    color: #315C54;
+    font-family: Georgia, serif;
+    font-size: clamp(18px, 2vw, 25px);
+    font-style: italic;
+
+    margin: 8px 0 0;
+    line-height: 1.3;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+
+    .about-closing {
+        padding: 20px 15px;
+    }
+
+    .about-closing-heading {
+        gap: 10px;
+    }
+
+    .about-closing-ornament {
+        width: 12%;
+    }
+
+    .about-closing h2 {
+        font-size: clamp(22px, 5vw, 30px);
+        white-space: normal;
+    }
+
+    .about-closing p {
+        font-size: 17px;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .about-story {
+        width: 100%;
+        padding: 35px 20px;
+        font-size: 17px;
+    }
+
+    .about-hero {
+        min-height: 0;
+        height: auto;
+    }
+}
+
+/* PERSONAL STORY PAGE NAVIGATION */
+.about-story-navigation {
+    text-align: center;
+    padding: 20px 20px 70px;
+}
+
+.about-story-navigation a {
+    display: inline-block;
+    color: #164B83;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-bottom: 1px solid #C6A76B;
+    padding-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.about-story-navigation a:hover {
+    color: #087F69;
+}
+
+/* ABOUT PORTRAIT — TABLET AND SMALLER DESKTOPS */
+@media (min-width: 701px) and (max-width: 1200px) {
+
+    .about-portrait {
+        width: clamp(220px, 25vw, 300px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+
+        margin: -140px 0 25px 35px;
+        shape-margin: 12px;
+    }
+
+}
+
+/* About portrait — mobile adjustments */
+@media (max-width: 850px) {
+
+    .about-portrait {
+        float: none;
+
+        width: 240px;
+        height: 240px;
+
+        margin: -110px auto 35px;
+
+        shape-outside: none;
+    }
+
+    .about-story {
+        padding: 60px 20px 35px;
+    }
+}
 
 
 /* ===========================================
 CONTACT Mainpage hosted scrolled page
 
 =============================================*/
+
+/* Main Contact section */
+.home-contact {
+    background: linear-gradient(
+        to bottom,
+        #210708,
+        #120606 65%,
+        #080505
+    );
+    text-align: center;
+    padding: 55px 25px 25px;
+    border-top: 1px solid #8C683D;
+}
+
+/* Contact heading */
+.home-contact h2 {
+    color: #D8B66A;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 4px;
+    margin: 0 0 22px;
+}
+
+/* Professional inquiry description */
+.contact-description {
+    color: #D8C6A8;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 auto 10px;
+}
+
+/* Robert Burnett Agency contact */
+.contact-agency {
+    color: #D8C6A8;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    line-height: 1.9;
+    margin: 5px auto 25px;
+    max-width: 700px;
+}
+
+.contact-agency a {
+    color: #D8B66A;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-agency a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+/* Fine gold divider */
+.contact-divider {
+    width: 180px;
+    height: 1px;
+    background-color: #80643E;
+    margin: 35px auto 22px;
+}
+
+/* Copyright */
+.site-copyright {
+    color: #A99B87;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .home-contact {
+        padding: 45px 20px 25px;
+    }
+
+    .contact-description,
+    .contact-agency {
+        font-size: 14px;
+    }
+
+    .site-copyright {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+}
 
 
 
